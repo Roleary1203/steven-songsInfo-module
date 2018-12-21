@@ -16,8 +16,8 @@ db.authenticate()
   });
 
 // songsinfo table schema
-const songsinfo = db.define(
-  'songsinfo',
+const SongsInfo = db.define(
+  'SongsInfo',
   {
     plays: { type: Sequelize.INTEGER },
     likes: { type: Sequelize.INTEGER },
@@ -32,18 +32,22 @@ const songsinfo = db.define(
   }
 );
 
-// applies songsinfo table to democloud db
-db.sync({ force: true })
+// applies SongsInfo table to democloud db
+SongsInfo.sync({ force: true })
   .then(() => {
-    console.log(`songsinfo table created :)`);
+    console.log(`SongsInfo table created :)`);
   })
   .catch(err => {
-    console.log('songsinfo table not created!', err);
+    console.log('SongsInfo table not created!', err);
   });
 
 // query to read all from db
-const read = songsinfo.find({}).complete((err, data) => {
-  console.log(data);
-});
+// const read = SongsInfo.findAll()
+//   .then(data => {
+//     console.log(data);
+//   })
+//   .catch(err => {
+//     console.log('unable to read all from db', err);
+//   });
 
-module.exports = { db, songsinfo, read };
+module.exports = { db, SongsInfo, read };
