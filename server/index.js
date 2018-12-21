@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var path = require('path');
+// const db = require('../database/index.js');
+const path = require('path');
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -16,14 +17,22 @@ app.get('/', (req, res) => {
 });
 
 // GET request to db
+// doesnt work yet
 // app.get('/api/songs-info', (req, res) => {
-//   if (err) {
-//     console.log('ERR: fix GET server routing');
-//   } else {
-//     res.send(JSON.stringify(data));
-//   }
+//   SongsInfo.findAll()
+//     .then(data => {
+//       res.render('democloud', {
+//         plays: 1,
+//         likes: 2
+//       });
+//     })
+//     .catch(err => {
+//       console.log('unable to read all from db', err);
+//     });
 // });
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
 });
+
+module.exports = app;
