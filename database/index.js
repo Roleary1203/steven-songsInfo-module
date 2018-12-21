@@ -33,21 +33,17 @@ const SongsInfo = db.define(
 );
 
 // applies SongsInfo table to democloud db
-SongsInfo.sync({ force: true })
-  .then(() => {
-    console.log(`SongsInfo table created :)`);
-  })
-  .catch(err => {
-    console.log('SongsInfo table not created!', err);
-  });
+db.sync();
 
 // query to read all from db
-// const read = SongsInfo.findAll()
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(err => {
-//     console.log('unable to read all from db', err);
-//   });
+const read = () => {
+  SongsInfo.findAll()
+    .then(data => {
+      console.log(data);
+    })
+    .catch(err => {
+      console.log('unable to read all from db', err);
+    });
+};
 
-module.exports = { db, SongsInfo, read };
+module.exports = { SongsInfo, read };

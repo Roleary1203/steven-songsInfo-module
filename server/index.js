@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const db = require('../database/index.js');
+const db = require('../database/index.js');
 const path = require('path');
 const port = process.env.PORT || 3000;
 
@@ -17,19 +17,15 @@ app.get('/', (req, res) => {
 });
 
 // GET request to db
-// doesnt work yet
-// app.get('/api/songs-info', (req, res) => {
-//   SongsInfo.findAll()
-//     .then(data => {
-//       res.render('democloud', {
-//         plays: 1,
-//         likes: 2
-//       });
-//     })
-//     .catch(err => {
-//       console.log('unable to read all from db', err);
-//     });
-// });
+app.get('/api/songs-info', (req, res) => {
+  db.read()
+    .then(data => {
+      res.json(data).sendStatus(200);
+    })
+    .catch(err => {
+      console.log('server GET request not working', err);
+    });
+});
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
