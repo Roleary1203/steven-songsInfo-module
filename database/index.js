@@ -45,3 +45,5 @@ db.sync({ force: true })
 const read = songsinfo.find({}).complete((err, data) => {
   console.log(data);
 });
+
+module.exports = { db, songsinfo, read };
