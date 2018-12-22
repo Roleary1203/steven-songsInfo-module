@@ -19,13 +19,13 @@ db.authenticate()
 const SongsInfo = db.define(
   'SongsInfo',
   {
-    plays: { type: Sequelize.INTEGER },
-    likes: { type: Sequelize.INTEGER },
-    reposts: { type: Sequelize.INTEGER },
-    description: { type: Sequelize.STRING },
-    artist: { type: Sequelize.STRING },
-    artist_followers: { type: Sequelize.INTEGER },
-    artist_tracks: { type: Sequelize.INTEGER }
+    plays: Sequelize.INTEGER,
+    likes: Sequelize.INTEGER,
+    reposts: Sequelize.INTEGER,
+    description: Sequelize.STRING,
+    artist: Sequelize.STRING,
+    artist_followers: Sequelize.INTEGER,
+    artist_tracks: Sequelize.INTEGER
   },
   {
     timestamps: false
@@ -35,15 +35,4 @@ const SongsInfo = db.define(
 // applies SongsInfo table to democloud db
 db.sync();
 
-// query to read all from db
-const read = () => {
-  SongsInfo.findAll()
-    .then(data => {
-      console.log(data);
-    })
-    .catch(err => {
-      console.log('unable to read all from db', err);
-    });
-};
-
-module.exports = { SongsInfo, read };
+module.exports = { SongsInfo };

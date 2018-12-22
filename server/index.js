@@ -18,9 +18,10 @@ app.get('/', (req, res) => {
 
 // GET request to db
 app.get('/api/songs-info', (req, res) => {
-  db.read()
+  console.log('THIS IS DB:LASKD:LASKD:L', db);
+  db.SongsInfo.findAll()
     .then(data => {
-      res.json(data).sendStatus(200);
+      res.json(data).status(200);
     })
     .catch(err => {
       console.log('server GET request not working', err);

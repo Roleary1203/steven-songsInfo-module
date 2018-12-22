@@ -8,8 +8,9 @@
   },
   "scripts": {
     "build": "webpack -d --watch",
+    "db": "mysql -u root < schema.sql",
     "start": "nodemon server/index.js",
-    "db": "mysql -u root < schema.sql"
+    "seed": "node database/seed.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
