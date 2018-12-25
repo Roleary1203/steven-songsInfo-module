@@ -7,17 +7,42 @@ import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      songsInfo: []
+    };
   }
+
+  componentDidMount() {
+    axios
+      .get('/api/songs-info')
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          songsInfo: res.data
+        });
+      })
+      .catch(err => {
+        console.log('client GET is not working!', err);
+      });
+  }
+
   render() {
     return (
       <div>
         <div>
-          <input type="type" />
-          <input type="submit" />
-          <SongsInfo />
-          <SongsDesc />
-          <Artist />
+          {this.state.songsInfo.map(songInfo => {
+            console.log(songInfo.plays);
+            return (
+              <SongsInfo
+                key={songInfo.id}
+                plays={songInfo.plays}
+                likes={songInfo.likes}
+                reposts={songInfo.reposts}
+              />
+            );
+            return <SongsDesc />;
+            return <Artist />;
+          })}
         </div>
       </div>
     );
