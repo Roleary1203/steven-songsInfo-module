@@ -40,8 +40,8 @@ class App extends React.Component {
                 reposts={songInfo.reposts}
               />
             );
-            return <SongsDesc />;
-            return <Artist />;
+            // return <SongsDesc />;
+            // return <Artist />;
           })}
         </div>
       </div>

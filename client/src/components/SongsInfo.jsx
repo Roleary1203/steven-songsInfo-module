@@ -9,7 +9,8 @@ class SongsInfo extends React.Component {
   render() {
     return (
       <div>
-        <h1>hello</h1>
+        <h1>these are buttons</h1>
+        {this.props.plays} {this.props.likes} {this.props.reposts}
       </div>
     );
   }
