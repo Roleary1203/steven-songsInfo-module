@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SongsInfo extends React.Component {
+class SongsDesc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,4 +14,4 @@ class SongsInfo extends React.Component {
     );
   }
 }
-export default SongsInfo;
+export default SongsDesc;
