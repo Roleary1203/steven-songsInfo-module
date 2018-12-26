@@ -22,7 +22,7 @@ class Artist extends React.Component {
         <div>{this.props.artFol}</div>
         <div>{this.props.artTra}</div>
         <button onClick={this.followClick}>
-          {this.state.followBtnOff ? 'follow' : 'following'}
+          {this.state.followBtnOff ? 'Follow' : 'Following'}
         </button>
       </div>
     );
