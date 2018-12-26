@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SongsDesc = props => {
-  return <div>{props.desc}</div>;
+  return <div class="desc">{props.desc}</div>;
 };
 
 export default SongsDesc;

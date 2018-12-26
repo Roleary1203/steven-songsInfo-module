@@ -53,13 +53,13 @@ class SongsInfo extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.likeClick}>
+        <button class="actions" onClick={this.likeClick}>
           {this.state.likeBtnOff ? 'Like' : 'Liked'}
         </button>
-        <button onClick={this.repostClick}>
+        <button class="actions" onClick={this.repostClick}>
           {this.state.repostBtnOff ? 'Repost' : 'Reposted'}
         </button>
-        <button onClick={this.toggleShare}>
+        <button class="actions" onClick={this.toggleShare}>
           {this.state.sharePopupOff ? (
             'Share'
           ) : (
@@ -82,9 +82,9 @@ class SongsInfo extends React.Component {
             </div>
           )}
         </button>
-        <div>play icon {this.props.plays}</div>
-        <div>likes icon {this.props.likes}</div>
-        <div>reposts icon {this.props.reposts}</div>
+        <div class="metrics">play icon {this.props.plays}</div>
+        <div class="metrics">likes icon {this.props.likes}</div>
+        <div class="metrics">reposts icon {this.props.reposts}</div>
       </div>
     );
   }
