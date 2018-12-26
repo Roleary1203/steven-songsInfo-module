@@ -77,9 +77,9 @@ class SongsInfo extends React.Component {
             </div>
           )}
         </button>
-        <div>{this.props.plays}</div>
-        <div>{this.props.likes}</div>
-        <div>{this.props.reposts}</div>
+        <div>play icon {this.props.plays}</div>
+        <div>likes icon {this.props.likes}</div>
+        <div>reposts icon {this.props.reposts}</div>
       </div>
     );
   }
