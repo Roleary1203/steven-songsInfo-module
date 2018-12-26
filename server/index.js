@@ -17,9 +17,15 @@ app.get('/', (req, res) => {
 });
 
 // GET request to db
+// only rendering one row from databse for now
+// need to write random num generator
+// to only GET one id per rendering of client
 app.get('/api/songs-info', (req, res) => {
-  console.log('THIS IS DB:LASKD:LASKD:L', db);
-  db.SongsInfo.findAll()
+  db.SongsInfo.findAll({
+    where: {
+      id: 1
+    }
+  })
     .then(data => {
       res.json(data).status(200);
     })

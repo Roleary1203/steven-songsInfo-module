@@ -36,7 +36,9 @@ class SongsInfo extends React.Component {
         <button onClick={this.handleClick}>
           {this.state.moreBtnOff ? 'more' : 'less'}
         </button>
-        {this.props.plays} {this.props.likes} {this.props.reposts}
+        <div>{this.props.plays}</div>
+        <div>{this.props.likes}</div>
+        <div>{this.props.reposts}</div>
       </div>
     );
   }
