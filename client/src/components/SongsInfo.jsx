@@ -1,4 +1,5 @@
 import React from 'react';
+import SharePopup from './SharePopup.jsx';
 
 class SongsInfo extends React.Component {
   constructor(props) {
@@ -6,12 +7,12 @@ class SongsInfo extends React.Component {
     this.state = {
       likeBtnOff: true,
       repostBtnOff: true,
-      shareBtnOff: true,
+      sharePopupOff: true,
       moreBtnOff: true
     };
     this.likeClick = this.likeClick.bind(this);
     this.repostClick = this.repostClick.bind(this);
-    this.shareClick = this.shareClick.bind(this);
+    this.toggleShare = this.toggleShare.bind(this);
     this.showMore = this.showMore.bind(this);
     this.closeMore = this.closeMore.bind(this);
   }
@@ -28,9 +29,9 @@ class SongsInfo extends React.Component {
     }));
   }
 
-  shareClick() {
+  toggleShare() {
     this.setState(prevState => ({
-      shareBtnOff: !prevState.shareBtnOff
+      sharePopupOff: !prevState.sharePopupOff
     }));
   }
 
@@ -58,8 +59,12 @@ class SongsInfo extends React.Component {
         <button onClick={this.repostClick}>
           {this.state.repostBtnOff ? 'Repost' : 'Reposted'}
         </button>
-        <button onClick={this.shareClick}>
-          {this.state.shareBtnOff ? 'Share' : 'Shared'}
+        <button onClick={this.toggleShare}>
+          {this.state.sharePopupOff ? (
+            'Share'
+          ) : (
+            <SharePopup text="Share" closePopup={this.toggleShare.bind(this)} />
+          )}
         </button>
         <button onClick={this.showMore}>
           {this.state.moreBtnOff ? (
@@ -84,4 +89,5 @@ class SongsInfo extends React.Component {
     );
   }
 }
+
 export default SongsInfo;
