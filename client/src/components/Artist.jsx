@@ -3,13 +3,27 @@ import React from 'react';
 class Artist extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      followBtnOff: true
+    };
+    this.followClick = this.followClick.bind(this);
+  }
+
+  followClick() {
+    this.setState(prevState => ({
+      followBtnOff: !prevState.followBtnOff
+    }));
   }
 
   render() {
     return (
       <div>
-        <h1>hello</h1>
+        <div>{this.props.artist}</div>
+        <div>{this.props.artFol}</div>
+        <div>{this.props.artTra}</div>
+        <button onClick={this.followClick}>
+          {this.state.followBtnOff ? 'follow' : 'following'}
+        </button>
       </div>
     );
   }
