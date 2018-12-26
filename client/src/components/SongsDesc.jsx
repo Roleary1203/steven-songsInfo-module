@@ -1,17 +1,7 @@
 import React from 'react';
 
-class SongsDesc extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const SongsDesc = props => {
+  return <div>{props.desc}</div>;
+};
 
-  render() {
-    return (
-      <div>
-        <h1>hello</h1>
-      </div>
-    );
-  }
-}
 export default SongsDesc;

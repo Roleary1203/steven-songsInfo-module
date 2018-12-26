@@ -33,14 +33,16 @@ class App extends React.Component {
           {this.state.songsInfo.map(songInfo => {
             console.log(songInfo.plays);
             return (
-              <SongsInfo
-                key={songInfo.id}
-                plays={songInfo.plays}
-                likes={songInfo.likes}
-                reposts={songInfo.reposts}
-              />
+              <div>
+                <SongsInfo
+                  key={songInfo.id}
+                  plays={songInfo.plays}
+                  likes={songInfo.likes}
+                  reposts={songInfo.reposts}
+                />
+                <SongsDesc key={songInfo.id} desc={songInfo.description} />
+              </div>
             );
-            // return <SongsDesc />;
             // return <Artist />;
           })}
         </div>

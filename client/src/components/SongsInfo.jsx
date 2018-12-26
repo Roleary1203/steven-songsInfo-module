@@ -9,14 +9,32 @@ class SongsInfo extends React.Component {
       shareBtnOff: true,
       moreBtnOff: true
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.likeClick = this.likeClick.bind(this);
+    this.repostClick = this.repostClick.bind(this);
+    this.shareClick = this.shareClick.bind(this);
+    this.moreClick = this.moreClick.bind(this);
   }
 
-  handleClick() {
+  likeClick() {
     this.setState(prevState => ({
-      likeBtnOff: !prevState.likeBtnOff,
-      repostBtnOff: !prevState.repostBtnOff,
-      shareBtnOff: !prevState.shareBtnOff,
+      likeBtnOff: !prevState.likeBtnOff
+    }));
+  }
+
+  repostClick() {
+    this.setState(prevState => ({
+      repostBtnOff: !prevState.repostBtnOff
+    }));
+  }
+
+  shareClick() {
+    this.setState(prevState => ({
+      shareBtnOff: !prevState.shareBtnOff
+    }));
+  }
+
+  moreClick() {
+    this.setState(prevState => ({
       moreBtnOff: !prevState.moreBtnOff
     }));
   }
@@ -24,16 +42,16 @@ class SongsInfo extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}>
+        <button onClick={this.likeClick}>
           {this.state.likeBtnOff ? 'like' : 'liked'}
         </button>
-        <button onClick={this.handleClick}>
+        <button onClick={this.repostClick}>
           {this.state.repostBtnOff ? 'repost' : 'reposted'}
         </button>
-        <button onClick={this.handleClick}>
+        <button onClick={this.shareClick}>
           {this.state.shareBtnOff ? 'share' : 'shared'}
         </button>
-        <button onClick={this.handleClick}>
+        <button onClick={this.moreClick}>
           {this.state.moreBtnOff ? 'more' : 'less'}
         </button>
         <div>{this.props.plays}</div>
