@@ -40,9 +40,8 @@ class App extends React.Component {
                   likes={songInfo.likes}
                   reposts={songInfo.reposts}
                 />
-                <SongsDesc key={songInfo.id} desc={songInfo.description} />
+                <SongsDesc desc={songInfo.description} />
                 <Artist
-                  key={songInfo.id}
                   artist={songInfo.artist}
                   artFol={songInfo.artist_followers}
                   artTra={songInfo.artist_tracks}

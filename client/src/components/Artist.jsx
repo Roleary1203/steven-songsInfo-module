@@ -18,10 +18,10 @@ class Artist extends React.Component {
   render() {
     return (
       <div>
-        <div class="artist">{this.props.artist}</div>
-        <div class="artist-info">followers icon {this.props.artFol}</div>
-        <div class="artist-info">tracks icon {this.props.artTra}</div>
-        <button class="follow" onClick={this.followClick}>
+        <div className="artist">{this.props.artist}</div>
+        <div className="artist-info">followers icon {this.props.artFol}</div>
+        <div className="artist-info">tracks icon {this.props.artTra}</div>
+        <button className="follow" onClick={this.followClick}>
           {this.state.followBtnOff ? 'Follow' : 'Following'}
         </button>
       </div>

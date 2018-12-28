@@ -6,11 +6,16 @@ class SongsInfo extends React.Component {
     super(props);
     this.state = {
       likeBtnOff: true,
+      likes: this.props.likes,
       repostBtnOff: true,
       sharePopupOff: true,
       moreBtnOff: true
     };
+
+    console.log(this.state.likes);
+    console.log(this.state.likes + 1);
     this.likeClick = this.likeClick.bind(this);
+    this.likeIncrement = this.likeIncrement.bind(this);
     this.repostClick = this.repostClick.bind(this);
     this.toggleShare = this.toggleShare.bind(this);
     this.showMore = this.showMore.bind(this);
@@ -21,6 +26,12 @@ class SongsInfo extends React.Component {
     this.setState(prevState => ({
       likeBtnOff: !prevState.likeBtnOff
     }));
+  }
+
+  likeIncrement() {
+    this.setState({
+      likes: this.state.likes + 1
+    });
   }
 
   repostClick() {
@@ -53,13 +64,16 @@ class SongsInfo extends React.Component {
   render() {
     return (
       <div>
-        <button class="actions" onClick={this.likeClick}>
+        <button
+          className="actions"
+          onClick={(this.likeClick, this.likeIncrement)}
+        >
           {this.state.likeBtnOff ? 'Like' : 'Liked'}
         </button>
-        <button class="actions" onClick={this.repostClick}>
+        <button className="actions" onClick={this.repostClick}>
           {this.state.repostBtnOff ? 'Repost' : 'Reposted'}
         </button>
-        <button class="actions" onClick={this.toggleShare}>
+        <button className="actions" onClick={this.toggleShare}>
           {this.state.sharePopupOff ? (
             'Share'
           ) : (
@@ -82,9 +96,9 @@ class SongsInfo extends React.Component {
             </div>
           )}
         </button>
-        <div class="metrics">play icon {this.props.plays}</div>
-        <div class="metrics">likes icon {this.props.likes}</div>
-        <div class="metrics">reposts icon {this.props.reposts}</div>
+        <div className="metrics">play icon {this.props.plays}</div>
+        <div className="metrics">likes icon {this.props.likes}</div>
+        <div className="metrics">reposts icon {this.props.reposts}</div>
       </div>
     );
   }
