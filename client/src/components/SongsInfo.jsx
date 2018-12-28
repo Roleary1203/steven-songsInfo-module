@@ -64,10 +64,7 @@ class SongsInfo extends React.Component {
   render() {
     return (
       <div>
-        <button
-          className="actions"
-          onClick={(this.likeClick, this.likeIncrement)}
-        >
+        <button className="actions" onClick={this.likeClick}>
           {this.state.likeBtnOff ? 'Like' : 'Liked'}
         </button>
         <button className="actions" onClick={this.repostClick}>

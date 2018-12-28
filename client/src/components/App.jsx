@@ -4,6 +4,11 @@ import SongsDesc from './SongsDesc.jsx';
 import Artist from './Artist.jsx';
 import axios from 'axios';
 
+const styles = {
+  app: { backgroundColor: 'orange', padding: '5' },
+  songsInfo: { backgroundColor: 'red', padding: '5' }
+};
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <div style={styles.app}>
           {this.state.songsInfo.map(songInfo => {
             console.log(songInfo.artist_followers);
             return (
