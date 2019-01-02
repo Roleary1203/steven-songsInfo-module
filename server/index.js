@@ -20,10 +20,17 @@ app.get('/', (req, res) => {
 // only rendering one row from databse for now
 // need to write random num generator
 // to only GET one id per rendering of client
+
+const ranNum = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
 app.get('/api/songs-info', (req, res) => {
   db.SongsInfo.findAll({
     where: {
-      id: 1
+      id: ranNum(0, 10)
     }
   })
     .then(data => {
