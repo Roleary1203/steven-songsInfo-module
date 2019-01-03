@@ -77,7 +77,7 @@ class SongsInfo extends React.Component {
             <SharePopup text="Share" closePopup={this.toggleShare.bind(this)} />
           )}
         </button>
-        <button onClick={this.showMore}>
+        <button className="actions" onClick={this.showMore}>
           {this.state.moreBtnOff ? (
             'More'
           ) : (
