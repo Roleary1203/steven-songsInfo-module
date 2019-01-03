@@ -24,7 +24,8 @@ class SongsInfo extends React.Component {
 
   likeClick() {
     this.setState(prevState => ({
-      likeBtnOff: !prevState.likeBtnOff
+      likeBtnOff: !prevState.likeBtnOff,
+      likes: this.state.likes + 1
     }));
   }
 
@@ -63,39 +64,46 @@ class SongsInfo extends React.Component {
 
   render() {
     return (
-      <div>
-        <button className="actions" onClick={this.likeClick}>
-          {this.state.likeBtnOff ? 'Like' : 'Liked'}
-        </button>
-        <button className="actions" onClick={this.repostClick}>
-          {this.state.repostBtnOff ? 'Repost' : 'Reposted'}
-        </button>
-        <button className="actions" onClick={this.toggleShare}>
-          {this.state.sharePopupOff ? (
-            'Share'
-          ) : (
-            <SharePopup text="Share" closePopup={this.toggleShare.bind(this)} />
-          )}
-        </button>
-        <button className="actions" onClick={this.showMore}>
-          {this.state.moreBtnOff ? (
-            'More'
-          ) : (
-            <div
-              className="more-menu"
-              ref={element => {
-                this.dropdownMenu = element;
-              }}
-            >
-              <button className="more-actions">Add to Next Up</button>
-              <button className="more-actions">Add to Playlist</button>
-              <button className="more-actions">Station</button>
-            </div>
-          )}
-        </button>
-        <div className="metrics">play icon {this.props.plays}</div>
-        <div className="metrics">likes icon {this.props.likes}</div>
-        <div className="metrics">reposts icon {this.props.reposts}</div>
+      <div className="songs-info-container">
+        <div className="flex">
+          <button className="actions" onClick={this.likeClick}>
+            {this.state.likeBtnOff ? 'Like' : 'Liked'}
+          </button>
+          <button className="actions" onClick={this.repostClick}>
+            {this.state.repostBtnOff ? 'Repost' : 'Reposted'}
+          </button>
+          <button className="actions" onClick={this.toggleShare}>
+            {this.state.sharePopupOff ? (
+              'Share'
+            ) : (
+              <SharePopup
+                text="Share"
+                closePopup={this.toggleShare.bind(this)}
+              />
+            )}
+          </button>
+          <button className="actions" onClick={this.showMore}>
+            {this.state.moreBtnOff ? (
+              'More'
+            ) : (
+              <div
+                className="more-menu"
+                ref={element => {
+                  this.dropdownMenu = element;
+                }}
+              >
+                <button className="more-actions">Add to Next Up</button>
+                <button className="more-actions">Add to Playlist</button>
+                <button className="more-actions">Station</button>
+              </div>
+            )}
+          </button>
+        </div>
+        <div className="flex">
+          <div className="metrics">play icon {this.props.plays}</div>
+          <div className="metrics">likes icon {this.state.likes}</div>
+          <div className="metrics">reposts icon {this.props.reposts}</div>
+        </div>
       </div>
     );
   }
