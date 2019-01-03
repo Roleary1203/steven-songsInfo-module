@@ -87,9 +87,9 @@ class SongsInfo extends React.Component {
                 this.dropdownMenu = element;
               }}
             >
-              <button>Add to Next Up</button>
-              <button>Add to Playlist</button>
-              <button>Station</button>
+              <button className="more-actions">Add to Next Up</button>
+              <button className="more-actions">Add to Playlist</button>
+              <button className="more-actions">Station</button>
             </div>
           )}
         </button>
