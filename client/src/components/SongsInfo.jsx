@@ -19,7 +19,7 @@ class SongsInfo extends React.Component {
     this.likeClick = this.likeClick.bind(this);
     this.likedClick = this.likedClick.bind(this);
     this.repostClick = this.repostClick.bind(this);
-    this.repostedClick = this.repostClick.bind(this);
+    this.repostedClick = this.repostedClick.bind(this);
     this.toggleShare = this.toggleShare.bind(this);
     this.showMore = this.showMore.bind(this);
     this.closeMore = this.closeMore.bind(this);
@@ -85,7 +85,7 @@ class SongsInfo extends React.Component {
               <span onClick={this.likedClick}>Liked</span>
             )}
           </button>
-          <button className="actions" onClick={this.repostClick}>
+          <button className="actions">
             {this.state.repostBtnOff ? (
               <span onClick={this.repostClick}>Repost</span>
             ) : (
