@@ -17,13 +17,15 @@ class Artist extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="artist">{this.props.artist}</div>
-        <div className="artist-info">followers icon {this.props.artFol}</div>
-        <div className="artist-info">tracks icon {this.props.artTra}</div>
-        <button className="follow" onClick={this.followClick}>
-          {this.state.followBtnOff ? 'Follow' : 'Following'}
-        </button>
+      <div className="desc-artist-container">
+        <div className="desc-artist-flex">
+          <div className="artist">{this.props.artist}</div>
+          <div className="artist-info">followers icon {this.props.artFol}</div>
+          <div className="artist-info">tracks icon {this.props.artTra}</div>
+          <button className="follow" onClick={this.followClick}>
+            {this.state.followBtnOff ? 'Follow' : 'Following'}
+          </button>
+        </div>
       </div>
     );
   }

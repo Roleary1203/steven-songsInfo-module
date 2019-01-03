@@ -1,10 +1,20 @@
-.songs-info-container {
+.songsinfo-container {
   display: flex;
   justify-content: space-between;
 }
 
-.flex {
+.songsinfos-flex {
   display: flex;
+}
+
+.desc-artist-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.artist-flex {
+  display: flex;
+  flex-direction: column;
 }
 
 .actions {
@@ -52,17 +62,19 @@
   color: #999;
 }
 
-.desc {
-  font-size: 14px;
-  font-family: 'Interstate', 'Lucida Grande', 'Lucida Sans Unicode',
-    'Lucida Sans', Garuda, Verdana, Tahoma, sans-serif;
-  font-weight: 100;
+.desc-flex {
+  display: flex;
+  font-family: 'InterstateSound Tnum', 'Interstate', 'Lucida Grande',
+    'Lucida Sans Unicode', 'Lucida Sans', Garuda, Verdana, Tahoma, sans-serif;
+  font-weight: 400;
+  font-size: 13px;
 }
 
 .artist {
   font-family: 'Interstate', 'Lucida Grande', 'Lucida Sans Unicode',
     'Lucida Sans', Garuda, Verdana, Tahoma, sans-serif;
   font-weight: 400;
+  font-size: 14px;
   line-height: 1.3;
 }
 

@@ -8,15 +8,18 @@ class SongsInfo extends React.Component {
       likeBtnOff: true,
       likes: this.props.likes,
       repostBtnOff: true,
+      reposts: this.props.reposts,
       sharePopupOff: true,
       moreBtnOff: true
     };
 
-    console.log(this.state.likes);
-    console.log(this.state.likes + 1);
+    console.log(this.props.likes);
+    console.log(this.props.reposts);
+    console.log(this.props.reposts + 1);
     this.likeClick = this.likeClick.bind(this);
-    this.likeIncrement = this.likeIncrement.bind(this);
+    this.likedClick = this.likedClick.bind(this);
     this.repostClick = this.repostClick.bind(this);
+    this.repostedClick = this.repostClick.bind(this);
     this.toggleShare = this.toggleShare.bind(this);
     this.showMore = this.showMore.bind(this);
     this.closeMore = this.closeMore.bind(this);
@@ -29,15 +32,24 @@ class SongsInfo extends React.Component {
     }));
   }
 
-  likeIncrement() {
-    this.setState({
-      likes: this.state.likes + 1
-    });
+  likedClick() {
+    this.setState(prevState => ({
+      likeBtnOff: !prevState.likeBtnOff,
+      likes: this.state.likes - 1
+    }));
   }
 
   repostClick() {
     this.setState(prevState => ({
-      repostBtnOff: !prevState.repostBtnOff
+      repostBtnOff: !prevState.repostBtnOff,
+      reposts: this.state.reposts + 1
+    }));
+  }
+
+  repostedClick() {
+    this.setState(prevState => ({
+      repostBtnOff: !prevState.repostBtnOff,
+      reposts: this.state.reposts - 1
     }));
   }
 
@@ -64,13 +76,21 @@ class SongsInfo extends React.Component {
 
   render() {
     return (
-      <div className="songs-info-container">
-        <div className="flex">
-          <button className="actions" onClick={this.likeClick}>
-            {this.state.likeBtnOff ? 'Like' : 'Liked'}
+      <div className="songsinfo-container">
+        <div className="songsinfos-flex">
+          <button className="actions">
+            {this.state.likeBtnOff ? (
+              <span onClick={this.likeClick}>Like</span>
+            ) : (
+              <span onClick={this.likedClick}>Liked</span>
+            )}
           </button>
           <button className="actions" onClick={this.repostClick}>
-            {this.state.repostBtnOff ? 'Repost' : 'Reposted'}
+            {this.state.repostBtnOff ? (
+              <span onClick={this.repostClick}>Repost</span>
+            ) : (
+              <span onClick={this.repostedClick}>Reposted</span>
+            )}
           </button>
           <button className="actions" onClick={this.toggleShare}>
             {this.state.sharePopupOff ? (
@@ -99,10 +119,10 @@ class SongsInfo extends React.Component {
             )}
           </button>
         </div>
-        <div className="flex">
+        <div className="songsinfos-flex">
           <div className="metrics">play icon {this.props.plays}</div>
           <div className="metrics">likes icon {this.state.likes}</div>
-          <div className="metrics">reposts icon {this.props.reposts}</div>
+          <div className="metrics">reposts icon {this.state.reposts}</div>
         </div>
       </div>
     );
