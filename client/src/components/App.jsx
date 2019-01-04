@@ -21,7 +21,7 @@ class App extends React.Component {
     axios
       .get('/api/songs-info')
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         this.setState({
           songsInfo: res.data
         });
@@ -35,7 +35,6 @@ class App extends React.Component {
     return (
       <div>
         {this.state.songsInfo.map(songInfo => {
-          console.log(songInfo.artist_followers);
           return (
             <div>
               <SongsInfo

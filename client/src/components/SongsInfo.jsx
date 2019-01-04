@@ -23,9 +23,6 @@ class SongsInfo extends React.Component {
       moreBtnOff: true
     };
 
-    console.log(this.props.likes);
-    console.log(this.props.reposts);
-    console.log(this.props.reposts + 1);
     this.likeClick = this.likeClick.bind(this);
     this.likedClick = this.likedClick.bind(this);
     this.repostClick = this.repostClick.bind(this);
@@ -138,9 +135,9 @@ class SongsInfo extends React.Component {
           </button>
         </div>
         <div className="songsinfos-flex">
-          <div className="metrics">play icon {this.props.plays}</div>
-          <div className="metrics">likes icon {this.state.likes}</div>
-          <div className="metrics">reposts icon {this.state.reposts}</div>
+          <div className="metrics">P {this.props.plays}</div>
+          <div className="metrics">L {this.state.likes}</div>
+          <div className="metrics">R {this.state.reposts}</div>
         </div>
       </div>
     );
