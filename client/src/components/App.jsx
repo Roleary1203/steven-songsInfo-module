@@ -43,12 +43,16 @@ class App extends React.Component {
                 likes={songInfo.likes}
                 reposts={songInfo.reposts}
               />
-              <SongsDesc desc={songInfo.description} />
-              <Artist
-                artist={songInfo.artist}
-                artFol={songInfo.artist_followers}
-                artTra={songInfo.artist_tracks}
-              />
+              <div className="container">
+                <Artist
+                  artist={songInfo.artist}
+                  artFol={songInfo.artist_followers}
+                  artTra={songInfo.artist_tracks}
+                />
+                <div className="desc-padding">
+                  <SongsDesc desc={songInfo.description} />
+                </div>
+              </div>
             </div>
           );
         })}

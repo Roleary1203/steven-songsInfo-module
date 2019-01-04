@@ -4,18 +4,17 @@
   align-items: baseline;
 }
 
+.container {
+  display: flex;
+  align-items: baseline;
+}
+
+.desc-padding {
+  padding: 20px;
+}
+
 .songsinfos-flex {
   display: flex;
-}
-
-.desc-artist-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.artist-flex {
-  display: flex;
-  flex-direction: column;
 }
 
 .actions {
@@ -99,7 +98,7 @@
   padding: 2px 10px 2px 10px;
   border: 1px solid #e5e5e5;
   border-radius: 3px;
-  /* background-color: #f50; */
+  background-color: #f50;
   /* border-color: #f50; */
   cursor: pointer;
   /* color: #fff; */

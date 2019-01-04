@@ -1,9 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const styles = {
-  follow: { backgroundColor: '#f50', borderColor: '#f50', color: '#fff' },
-  following: { backgroundColor: '#fff', borderColor: '#fff', color: '#f50' }
-};
+const Following = styled.button`
+  background-color: #fff;
+  border-color: #fff;
+  color: #f50;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+`;
 
 class Artist extends React.Component {
   constructor(props) {
@@ -37,17 +41,15 @@ class Artist extends React.Component {
           <div className="artist">{this.props.artist}</div>
           <div className="artist-info">F {this.state.follows}</div>
           <div className="artist-info">T {this.props.artTra}</div>
-          <button className="follow">
+          <div>
             {this.state.followBtnOff ? (
-              <span onClick={this.followClick} style={styles.follow}>
+              <button className="follow" onClick={this.followClick}>
                 Follow
-              </span>
+              </button>
             ) : (
-              <span onClick={this.followingClick} style={styles.following}>
-                Following
-              </span>
+              <Following onClick={this.followingClick}>Following</Following>
             )}
-          </button>
+          </div>
         </div>
       </div>
     );
