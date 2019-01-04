@@ -1,12 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// background-color: #fff;
-// border-color: #fff;
-// color: #f50;
-// border: 1px solid #e5e5e5;
-// border-radius: 3px;
-
 const Following = styled.button`
   display: inline-block;
   position: relative;
