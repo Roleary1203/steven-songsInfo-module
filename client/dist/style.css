@@ -10,7 +10,7 @@
 }
 
 .desc-padding {
-  padding: 20px;
+  padding: 10px 150px;
 }
 
 .songsinfos-flex {
@@ -95,13 +95,13 @@
   position: relative;
   height: 26px;
   margin: 0;
-  padding: 2px 10px 2px 10px;
+  padding: 2px 11px 2px 10px;
   border: 1px solid #e5e5e5;
   border-radius: 3px;
   background-color: #f50;
-  /* border-color: #f50; */
+  border-color: #f50;
   cursor: pointer;
-  /* color: #fff; */
+  color: #fff;
   font-size: 12px;
   line-height: 20px;
   white-space: nowrap;

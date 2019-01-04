@@ -1,12 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// background-color: #fff;
+// border-color: #fff;
+// color: #f50;
+// border: 1px solid #e5e5e5;
+// border-radius: 3px;
+
 const Following = styled.button`
-  background-color: #fff;
-  border-color: #fff;
-  color: #f50;
+  display: inline-block;
+  position: relative;
+  height: 26px;
+  margin: 0;
+  padding: 2px 11px 2px 10px;
   border: 1px solid #e5e5e5;
   border-radius: 3px;
+  background-color: #fff;
+  border-color: #f50;
+  cursor: pointer;
+  color: #f50;
+  font-size: 12px;
+  line-height: 20px;
+  white-space: nowrap;
+  font-family: 'Interstate', 'Lucida Grande', 'Lucida Sans Unicode',
+    'Lucida Sans', Garuda, Verdana, Tahoma, sans-serif;
+  font-weight: 100;
+  text-align: center;
+  vertical-align: baseline;
 `;
 
 class Artist extends React.Component {
