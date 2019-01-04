@@ -1,6 +1,16 @@
 import React from 'react';
 import SharePopup from './SharePopup.jsx';
 
+const styles = {
+  like: { color: '#333' },
+  liked: { color: '#f50' },
+  repost: { color: '#333' },
+  resposted: { color: '#f50' },
+  share: { color: '#333' },
+  more: { color: '#333' },
+  mored: { color: '#f50' }
+};
+
 class SongsInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -80,21 +90,29 @@ class SongsInfo extends React.Component {
         <div className="songsinfos-flex">
           <button className="actions">
             {this.state.likeBtnOff ? (
-              <span onClick={this.likeClick}>Like</span>
+              <span onClick={this.likeClick} style={styles.like}>
+                Like
+              </span>
             ) : (
-              <span onClick={this.likedClick}>Liked</span>
+              <span onClick={this.likedClick} style={styles.liked}>
+                Liked
+              </span>
             )}
           </button>
           <button className="actions">
             {this.state.repostBtnOff ? (
-              <span onClick={this.repostClick}>Repost</span>
+              <span onClick={this.repostClick} style={styles.respost}>
+                Repost
+              </span>
             ) : (
-              <span onClick={this.repostedClick}>Reposted</span>
+              <span onClick={this.repostedClick} style={styles.resposted}>
+                Reposted
+              </span>
             )}
           </button>
           <button className="actions" onClick={this.toggleShare}>
             {this.state.sharePopupOff ? (
-              'Share'
+              <span style={styles.share}>Share</span>
             ) : (
               <SharePopup
                 text="Share"
@@ -104,7 +122,7 @@ class SongsInfo extends React.Component {
           </button>
           <button className="actions" onClick={this.showMore}>
             {this.state.moreBtnOff ? (
-              'More'
+              <span style={styles.more}>More</span>
             ) : (
               <div
                 className="more-menu"
