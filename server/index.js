@@ -9,7 +9,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + '/../client/dist'));
+// app.use(express.static(__dirname + '/../client/dist'));
+app.use('/', express.static('./client/dist/'));
+app.use(/\/\d+\//, express.static('./client/dist/'));
 
 // GET request to render index.html
 app.get('/', (req, res) => {
@@ -27,10 +29,12 @@ const ranNum = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-app.get('/api/songs-info', (req, res) => {
+app.get('/api/songs-info/:id', (req, res) => {
+  // console.log('PARAMS', req.params);
+  // console.log('BODY', req.body);
   db.SongsInfo.findAll({
     where: {
-      id: ranNum(0, 10)
+      id: req.params.id
     }
   })
     .then(data => {

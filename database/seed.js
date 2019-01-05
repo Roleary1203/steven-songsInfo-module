@@ -11,7 +11,7 @@ const rndArtTra = [];
 
 const rndGen = (type, arr) => {
   let rndData;
-  for (let i = 0; i <= 10; i++) {
+  for (let i = 0; i <= 99; i++) {
     if (
       type === 'plays' ||
       type === 'likes' ||
@@ -39,7 +39,7 @@ rndGen('artistTracks', rndArtTra);
 rndGen('descriptions', rndDesc);
 rndGen('artists', rndArt);
 
-for (let i = 0; i <= 10; i++) {
+for (let i = 0; i <= 99; i++) {
   db.SongsInfo.create({
     plays: rndPlays[i],
     likes: rndLikes[i],
