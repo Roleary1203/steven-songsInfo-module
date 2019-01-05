@@ -1,6 +1,16 @@
 import React from 'react';
 import SharePopup from './SharePopup.jsx';
 
+const styles = {
+  like: { color: '#333' },
+  liked: { color: '#f50' },
+  repost: { color: '#333' },
+  resposted: { color: '#f50' },
+  share: { color: '#333' },
+  more: { color: '#333' },
+  mored: { color: '#f50' }
+};
+
 class SongsInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -8,15 +18,15 @@ class SongsInfo extends React.Component {
       likeBtnOff: true,
       likes: this.props.likes,
       repostBtnOff: true,
+      reposts: this.props.reposts,
       sharePopupOff: true,
       moreBtnOff: true
     };
 
-    console.log(this.state.likes);
-    console.log(this.state.likes + 1);
     this.likeClick = this.likeClick.bind(this);
-    this.likeIncrement = this.likeIncrement.bind(this);
+    this.likedClick = this.likedClick.bind(this);
     this.repostClick = this.repostClick.bind(this);
+    this.repostedClick = this.repostedClick.bind(this);
     this.toggleShare = this.toggleShare.bind(this);
     this.showMore = this.showMore.bind(this);
     this.closeMore = this.closeMore.bind(this);
@@ -24,19 +34,29 @@ class SongsInfo extends React.Component {
 
   likeClick() {
     this.setState(prevState => ({
-      likeBtnOff: !prevState.likeBtnOff
+      likeBtnOff: !prevState.likeBtnOff,
+      likes: this.state.likes + 1
     }));
   }
 
-  likeIncrement() {
-    this.setState({
-      likes: this.state.likes + 1
-    });
+  likedClick() {
+    this.setState(prevState => ({
+      likeBtnOff: !prevState.likeBtnOff,
+      likes: this.state.likes - 1
+    }));
   }
 
   repostClick() {
     this.setState(prevState => ({
-      repostBtnOff: !prevState.repostBtnOff
+      repostBtnOff: !prevState.repostBtnOff,
+      reposts: this.state.reposts + 1
+    }));
+  }
+
+  repostedClick() {
+    this.setState(prevState => ({
+      repostBtnOff: !prevState.repostBtnOff,
+      reposts: this.state.reposts - 1
     }));
   }
 
@@ -63,39 +83,62 @@ class SongsInfo extends React.Component {
 
   render() {
     return (
-      <div>
-        <button className="actions" onClick={this.likeClick}>
-          {this.state.likeBtnOff ? 'Like' : 'Liked'}
-        </button>
-        <button className="actions" onClick={this.repostClick}>
-          {this.state.repostBtnOff ? 'Repost' : 'Reposted'}
-        </button>
-        <button className="actions" onClick={this.toggleShare}>
-          {this.state.sharePopupOff ? (
-            'Share'
-          ) : (
-            <SharePopup text="Share" closePopup={this.toggleShare.bind(this)} />
-          )}
-        </button>
-        <button onClick={this.showMore}>
-          {this.state.moreBtnOff ? (
-            'More'
-          ) : (
-            <div
-              className="more-menu"
-              ref={element => {
-                this.dropdownMenu = element;
-              }}
-            >
-              <button>Add to Next Up</button>
-              <button>Add to Playlist</button>
-              <button>Station</button>
-            </div>
-          )}
-        </button>
-        <div className="metrics">play icon {this.props.plays}</div>
-        <div className="metrics">likes icon {this.props.likes}</div>
-        <div className="metrics">reposts icon {this.props.reposts}</div>
+      <div className="songsinfo-container">
+        <div className="songsinfos-flex">
+          <button className="actions">
+            {this.state.likeBtnOff ? (
+              <span onClick={this.likeClick} style={styles.like}>
+                Like
+              </span>
+            ) : (
+              <span onClick={this.likedClick} style={styles.liked}>
+                Liked
+              </span>
+            )}
+          </button>
+          <button className="actions">
+            {this.state.repostBtnOff ? (
+              <span onClick={this.repostClick} style={styles.respost}>
+                Repost
+              </span>
+            ) : (
+              <span onClick={this.repostedClick} style={styles.resposted}>
+                Reposted
+              </span>
+            )}
+          </button>
+          <button className="actions" onClick={this.toggleShare}>
+            {this.state.sharePopupOff ? (
+              <span style={styles.share}>Share</span>
+            ) : (
+              <SharePopup
+                text="Share"
+                closePopup={this.toggleShare.bind(this)}
+              />
+            )}
+          </button>
+          <button className="actions" onClick={this.showMore}>
+            {this.state.moreBtnOff ? (
+              <span style={styles.more}>More</span>
+            ) : (
+              <div
+                className="more-menu"
+                ref={element => {
+                  this.dropdownMenu = element;
+                }}
+              >
+                <button className="more-actions">Add to Next Up</button>
+                <button className="more-actions">Add to Playlist</button>
+                <button className="more-actions">Station</button>
+              </div>
+            )}
+          </button>
+        </div>
+        <div className="songsinfos-flex">
+          <div className="metrics">P {this.props.plays}</div>
+          <div className="metrics">L {this.state.likes}</div>
+          <div className="metrics">R {this.state.reposts}</div>
+        </div>
       </div>
     );
   }
