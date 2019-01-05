@@ -13,13 +13,27 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      songsInfo: []
+      songsInfo: [],
+      id: this.props.id
     };
   }
 
   componentDidMount() {
+    // console.log('WINDOW', window.location.pathname);
+    var songId;
+    var id = window.location.pathname.slice(
+      1,
+      window.location.pathname.length - 1
+    );
+    if (id) {
+      songId = Number(id);
+    } else {
+      songId = this.state.id;
+    }
+
+    // console.log('ID', id);
     axios
-      .get('/api/songs-info')
+      .get(`/api/songs-info/${songId}`)
       .then(res => {
         // console.log(res.data);
         this.setState({
