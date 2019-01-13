@@ -1,38 +1,23 @@
-const Sequelize = require('sequelize');
+var fs = require('fs');
+var pg = require('pg');
+var copyFrom = require('pg-copy-streams').from;
+const connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/democloud"
 
-// setup connection
-const db = new Sequelize('democloud', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql'
+const client = new pg.Client(connectionString);
+console.time()
+client.connect(function(err, client, done) {
+  var stream = client.query(copyFrom('COPY SongsInfos(plays,likes,reposts,description,artist,artist_followers,artist_tracks) FROM STDIN WITH CSV HEADER'));
+  var fileStream = fs.createReadStream('data.csv')
+  fileStream.pipe(stream)
+  //fileStream.on('error', done);
 });
+console.timeEnd()
 
-// test connection
-db.authenticate()
-  .then(() => {
-    console.log('db connection success!');
-  })
-  .catch(err => {
-    console.log('NO db connection!', err);
-  });
+const getData = (id,callback) => {
+ client.query(`SELECT * FROM Songsinfos WHERE id = ${id}`, (err, results) => {
+ 	err ? callback(err) : callback(results);
+ }
+ 	)
+}
 
-// songsinfo table schema
-const SongsInfo = db.define(
-  'SongsInfo',
-  {
-    plays: Sequelize.INTEGER,
-    likes: Sequelize.INTEGER,
-    reposts: Sequelize.INTEGER,
-    description: Sequelize.STRING,
-    artist: Sequelize.STRING,
-    artist_followers: Sequelize.INTEGER,
-    artist_tracks: Sequelize.INTEGER
-  },
-  {
-    timestamps: false
-  }
-);
-
-// applies SongsInfo table to democloud db
-db.sync();
-
-module.exports = { SongsInfo };
+module.exports = { getData }

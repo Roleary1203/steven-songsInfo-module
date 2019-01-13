@@ -31,18 +31,23 @@ class App extends React.Component {
       songId = this.state.id;
     }
 
-    // console.log('ID', id);
+    /*// console.log('ID', id);
     axios
       .get(`/api/songs-info/${songId}`)
       .then(res => {
-        // console.log(res.data);
+        console.log(res.data);
         this.setState({
           songsInfo: res.data
         });
       })
       .catch(err => {
         console.log('client GET is not working!', err);
-      });
+      });*/
+
+      fetch(`/api/songs-info/${songId}`)
+      .then(res => res.json())
+      .then(data => console.log('data',data))
+      .catch(err => console.log(err))
   }
 
   render() {

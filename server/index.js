@@ -13,11 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static('./client/dist/'));
 app.use(/\/\d+\//, express.static('./client/dist/'));
 
-// GET request to render index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
-
 // GET request to db
 // only rendering one row from databse for now
 // need to write random num generator
@@ -30,19 +25,13 @@ const ranNum = (min, max) => {
 };
 
 app.get('/api/songs-info/:id', (req, res) => {
-  // console.log('PARAMS', req.params);
-  // console.log('BODY', req.body);
-  db.SongsInfo.findAll({
-    where: {
-      id: req.params.id
-    }
+  console.log('PARAMS', req.params);
+  console.log('BODY', req.body);
+  db.getData(req.params.id, (err,results) => {
+    err ? res.send(err) : res.status(200).send(results)
   })
-    .then(data => {
-      res.json(data).status(200);
-    })
-    .catch(err => {
-      console.log('server GET request not working', err);
-    });
+
+ 
 });
 
 app.listen(port, () => {

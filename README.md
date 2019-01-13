@@ -30,10 +30,17 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ### Installing Dependencies
 
+from within postgres terminal:
+\i schema.sql
+
+--creates database and table
+
 From within the root directory:
 
-```sh
-npm install -g webpack
-npm install
-```
+1.npm install
+2.node --max-old-space-size=4096 database/seed.js. //might need to increase number
+3.npm run build
+4.npm start
+
+
 
