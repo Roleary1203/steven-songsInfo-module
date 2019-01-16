@@ -10,7 +10,9 @@
     "build": "webpack -d --watch",
     "db": "psql postgres \\i schema.sql",
     "start": "nodemon server/index.js",
-    "seed": "node --max-old-space-size=4096 database/seed.js"
+    "create": "node --max-old-space-size=8192 database/createData.js",
+    "seedp": "node --max-old-space-size=8192 database/seedPost.js",
+    "seedm": "node --max-old-space-size=8192 database/seedMongo.js"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
@@ -26,6 +28,8 @@
     "fast-csv": "^2.4.1",
     "fs": "0.0.1-security",
     "json2csv": "^4.3.3",
+    "mongoose": "^5.4.3",
+    "mongoose-auto-increment": "^5.0.1",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.4",
     "nodemon": "^1.18.9",

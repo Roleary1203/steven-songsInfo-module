@@ -27,9 +27,9 @@ const ranNum = (min, max) => {
 app.get('/api/songs-info/:id', (req, res) => {
   console.log('PARAMS', req.params);
   console.log('BODY', req.body);
-  db.getData(req.params.id, (err,results) => {
-    err ? res.send(err) : res.status(200).send(results)
-  })
+  db.getData(req.params.id, (err,results) => 
+    err ? res.send(err) : console.log(results)//res.status(200).send(results)
+  )
 
  
 });

@@ -1,23 +1,36 @@
-var fs = require('fs');
-var pg = require('pg');
-var copyFrom = require('pg-copy-streams').from;
-const connectionString = process.env.DATABASE_URL || "postgres://localhost:5432/democloud"
+const mongoose = require('mongoose');
+const csv = require("fast-csv")
+const fs = require('fs');
 
-const client = new pg.Client(connectionString);
-console.time()
-client.connect(function(err, client, done) {
-  var stream = client.query(copyFrom('COPY SongsInfos(plays,likes,reposts,description,artist,artist_followers,artist_tracks) FROM STDIN WITH CSV HEADER'));
-  var fileStream = fs.createReadStream('data.csv')
-  fileStream.pipe(stream)
-  //fileStream.on('error', done);
+
+mongoose.connect('mongodb://localhost/democloud',{ useNewUrlParser: true } );
+
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('Mongoose DB Connected')
 });
-console.timeEnd()
 
-const getData = (id,callback) => {
- client.query(`SELECT * FROM Songsinfos WHERE id = ${id}`, (err, results) => {
- 	err ? callback(err) : callback(results);
- }
- 	)
+var SongsInfosSchema = new mongoose.Schema({
+	_id: String,
+	plays: Number,
+	likes: Number,
+	reposts: Number,
+	description: String,
+	artist: String,
+	artist_followers: Number,
+	artist_tracks: Number
+
+})
+
+var SongsInfos = mongoose.model('SongsInfos', SongsInfosSchema);
+
+var getData =(id,callback) => {
+	SongsInfos.findOne({ _id: id}, (err, results) => {
+		err ? callback(err) : callback(results);
+	})
 }
 
-module.exports = { getData }
+
+ module.exports = { SongsInfos, db, mongoose , getData}

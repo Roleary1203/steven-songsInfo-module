@@ -30,24 +30,20 @@ class App extends React.Component {
     } else {
       songId = this.state.id;
     }
-
-    /*// console.log('ID', id);
+    var info = []
+    // console.log('ID', id);
     axios
       .get(`/api/songs-info/${songId}`)
       .then(res => {
-        console.log(res.data);
+        //info.push(res.data)
+        //console.log(res.data.rows)
         this.setState({
-          songsInfo: res.data
+          songsInfo: res.data.rows
         });
       })
       .catch(err => {
         console.log('client GET is not working!', err);
-      });*/
-
-      fetch(`/api/songs-info/${songId}`)
-      .then(res => res.json())
-      .then(data => console.log('data',data))
-      .catch(err => console.log(err))
+      });
   }
 
   render() {

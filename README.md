@@ -30,10 +30,11 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ### Installing Dependencies
 
-from within postgres terminal:
+from within postgres terminal: (psql postgres)
+
+>>>creates database and table<<
 \i schema.sql
 
---creates database and table
 
 From within the root directory:
 
