@@ -7,6 +7,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "queryp": "node database/Psqlqueries.js",
+    "querym": "node database/Mongqueries.js",
+    "test": "jest",
     "build": "webpack -d --watch",
     "db": "psql postgres \\i schema.sql",
     "start": "nodemon server/index.js",
@@ -27,6 +30,7 @@
     "faker": "^4.1.0",
     "fast-csv": "^2.4.1",
     "fs": "0.0.1-security",
+    "jest": "^23.6.0",
     "json2csv": "^4.3.3",
     "mongoose": "^5.4.3",
     "mongoose-auto-increment": "^5.0.1",

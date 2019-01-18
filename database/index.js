@@ -20,7 +20,8 @@ var SongsInfosSchema = new mongoose.Schema({
 	description: String,
 	artist: String,
 	artist_followers: Number,
-	artist_tracks: Number
+	artist_tracks: Number,
+	isFollowed: Boolean
 
 })
 

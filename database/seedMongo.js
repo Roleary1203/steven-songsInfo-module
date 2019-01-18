@@ -19,7 +19,7 @@ csv
  })
  .on("end", function(){
     	mong.SongsInfos.collection.insertMany(authors,(err, documents) => {
-            err ? console.log('Mong Insert Broke', err) : console.timeEnd('finished seeding')
+            err ? console.log('Mong Insert Broke', err) : console.timeEnd('finished seeding') //about 235 seconds
          });
  });
  

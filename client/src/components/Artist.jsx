@@ -28,10 +28,19 @@ class Artist extends React.Component {
     super(props);
     this.state = {
       followBtnOff: true,
-      follows: this.props.artFol
+      follows: this.props.artFol,
+      id: this.props.id
     };
     this.followClick = this.followClick.bind(this);
     this.followingClick = this.followingClick.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.followed === true) {
+      this.setState({
+        followBtnOff: false
+      })
+    }
   }
 
   followClick() {
@@ -39,6 +48,8 @@ class Artist extends React.Component {
       followBtnOff: !prevState.followBtnOff,
       follows: this.state.follows + 1
     }));
+    this.updateFollower(this.state.id,this.state.follows +1)
+
   }
 
   followingClick() {
@@ -46,6 +57,23 @@ class Artist extends React.Component {
       followBtnOff: !prevState.followBtnOff,
       follows: this.state.follows - 1
     }));
+    this.updateFollower(this.state.id,this.state.follows -1)
+  }
+
+  updateFollower(id,updatedNumber) {
+    let data = {id: id, num: updatedNumber}
+    console.log(data)
+    fetch('/api/songs-info/follower', {
+      method: "POST",
+        headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    
+
   }
 
   render() {

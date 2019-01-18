@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const db = require('../database/index.js');
+const controllers = require('../database/controllers/index.js');
 const path = require('path');
 const port = process.env.PORT || 3000;
 
@@ -24,15 +24,9 @@ const ranNum = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-app.get('/api/songs-info/:id', (req, res) => {
-  console.log('PARAMS', req.params);
-  console.log('BODY', req.body);
-  db.getData(req.params.id, (err,results) => 
-    err ? res.send(err) : console.log(results)//res.status(200).send(results)
-  )
+app.get('/api/songs-info/:id', controllers.getData)
+app.post('/api/songs-info/follower', controllers.updateFollowers)
 
- 
-});
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);

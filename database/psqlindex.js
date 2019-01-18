@@ -11,8 +11,7 @@ client.connect();
 const getData = (id,callback) => {
  client.query(`SELECT * FROM Songsinfos WHERE id = ${id}`, (err, results) => {
  	err ? callback(err) : callback(results);
- }
- 	)
+ })
 }
 
 module.exports = { client, getData }

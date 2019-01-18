@@ -35,10 +35,10 @@ class App extends React.Component {
     axios
       .get(`/api/songs-info/${songId}`)
       .then(res => {
-        //info.push(res.data)
-        //console.log(res.data.rows)
+        info.push(res.data)
+        console.log(res.data.rows)
         this.setState({
-          songsInfo: res.data.rows
+          songsInfo: info
         });
       })
       .catch(err => {
@@ -60,6 +60,8 @@ class App extends React.Component {
               />
               <div className="container">
                 <Artist
+                  followed={songInfo.isFollowed}
+                  id={songInfo._id}
                   artist={songInfo.artist}
                   artFol={songInfo.artist_followers}
                   artTra={songInfo.artist_tracks}
