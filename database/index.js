@@ -17,7 +17,7 @@ var SongsInfosSchema = new mongoose.Schema({
 	plays: Number,
 	likes: Number,
 	reposts: Number,
-	description: String,
+	date: String,
 	artist: String,
 	artist_followers: Number,
 	artist_tracks: Number,
@@ -27,11 +27,5 @@ var SongsInfosSchema = new mongoose.Schema({
 
 var SongsInfos = mongoose.model('SongsInfos', SongsInfosSchema);
 
-var getData =(id,callback) => {
-	SongsInfos.findOne({ _id: id}, (err, results) => {
-		err ? callback(err) : callback(results);
-	})
-}
 
-
- module.exports = { SongsInfos, db, mongoose , getData}
+ module.exports = { SongsInfos, db, mongoose }

@@ -60,6 +60,7 @@ class App extends React.Component {
               />
               <div className="container">
                 <Artist
+                  key={songInfo.id}
                   followed={songInfo.isFollowed}
                   id={songInfo._id}
                   artist={songInfo.artist}
@@ -67,7 +68,7 @@ class App extends React.Component {
                   artTra={songInfo.artist_tracks}
                 />
                 <div className="desc-padding">
-                  <SongsDesc desc={songInfo.description} />
+                  <SongsDesc date={songInfo.date} />
                 </div>
               </div>
             </div>

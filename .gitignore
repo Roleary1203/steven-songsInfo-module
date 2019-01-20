@@ -2,3 +2,7 @@
 /client/dist/bundle.js
 .vscode/
 data.csv
+hello.yml
+newrelic.js
+newrelic_agent.log
+SDC.pem

@@ -64,7 +64,7 @@ class Artist extends React.Component {
     let data = {id: id, num: updatedNumber}
     console.log(data)
     fetch('/api/songs-info/follower', {
-      method: "POST",
+      method: "post",
         headers: {
         'Content-Type': 'application/json'
       },

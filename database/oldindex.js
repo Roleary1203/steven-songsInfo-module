@@ -22,7 +22,7 @@ const SongsInfo = db.define(
     plays: Sequelize.INTEGER,
     likes: Sequelize.INTEGER,
     reposts: Sequelize.INTEGER,
-    description: Sequelize.STRING,
+    date: Sequelize.STRING,
     artist: Sequelize.STRING,
     artist_followers: Sequelize.INTEGER,
     artist_tracks: Sequelize.INTEGER

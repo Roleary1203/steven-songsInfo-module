@@ -1,10 +1,15 @@
+const nr = require('newrelic')
 const express = require('express');
 const bodyParser = require('body-parser');
 const controllers = require('../database/controllers/index.js');
 const path = require('path');
 const port = process.env.PORT || 3000;
 
+
+
 const app = express();
+
+let followButton =
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,6 +31,9 @@ const ranNum = (min, max) => {
 
 app.get('/api/songs-info/:id', controllers.getData)
 app.post('/api/songs-info/follower', controllers.updateFollowers)
+app.delete('/api/songs-info/delete', controllers.deleteSong)
+app.post('/api/songs-info/create', controllers.createSong)
+
 
 
 app.listen(port, () => {
